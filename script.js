@@ -1,5 +1,3 @@
-// 1. БАЗА ДАННЫХ (15 МФО)
-// Добавили поле refLink (реферальная ссылка) и approval (минуты)
 const mfoData = [
     { id: 1, name: "Займер", legal: 'ООО МФК "Займер"', sum: 30000, term: 21, age: 18, approval: 5, badge: "Хит", color: "gray", refLink: "https://zaymer.ru/?ref=123" },
     { id: 2, name: "Займ.ру", legal: 'ООО МФК "Займ.ру"', sum: 30000, term: 21, age: 18, approval: 5, badge: "", color: "blue", refLink: "https://zaim.ru/?ref=456" },
@@ -18,19 +16,16 @@ const mfoData = [
     { id: 15, name: "ГринМани", legal: 'ООО МФК "ГринМани"', sum: 30000, term: 21, age: 18, approval: 5, badge: "", color: "maroon", refLink: "https://greenmoney.ru/?ref=112" },
 ];
 
-// 2. ФУНКЦИЯ ОТРИСОВКИ КАРТОЧЕК
 function renderCards(data, customRefLink = '') {
     const container = document.getElementById('mfo-list');
     container.innerHTML = '';
 
     if (data.length === 0) {
-        container.innerHTML = '<p style="text-align:center; color:#888; padding: 20px;">По вашим параметрам ничего не найдено 😔</p>';
+        container.innerHTML = '<p style="text-align:center;color:#888;padding:20px;">По вашим параметрам ничего не найдено 😔</p>';
         return;
     }
 
     data.forEach(mfo => {
-        // Если пользователь ввел свою ссылку в настройках, используем её для всех.
-        // Иначе используем ссылку из базы данных.
         const finalLink = customRefLink || mfo.refLink;
 
         const cardHTML = `
@@ -43,7 +38,7 @@ function renderCards(data, customRefLink = '') {
                         <p class="legal">${mfo.legal}</p>
                     </div>
                 </div>
-                
+
                 <div class="info-grid">
                     <div class="info-item">
                         <span class="value">до ${mfo.sum.toLocaleString('ru-RU')} ₽</span>
@@ -63,7 +58,6 @@ function renderCards(data, customRefLink = '') {
                     </div>
                 </div>
 
-                <!-- Кнопка теперь ведет на ссылку -->
                 <a href="${finalLink}" target="_blank" class="btn">Оформить</a>
             </div>
         `;
@@ -71,7 +65,6 @@ function renderCards(data, customRefLink = '') {
     });
 }
 
-// 3. ЛОГИКА ФИЛЬТРАЦИИ
 function applyFilters() {
     const sumInput = document.getElementById('filter-sum').value;
     const ageInput = document.getElementById('filter-age').value;
@@ -82,45 +75,27 @@ function applyFilters() {
         const sumMatch = !sumInput || mfo.sum >= parseInt(sumInput);
         const ageMatch = !ageInput || mfo.age <= parseInt(ageInput);
         const approvalMatch = !approvalInput || mfo.approval <= parseInt(approvalInput);
-        
         return sumMatch && ageMatch && approvalMatch;
     });
 
-    // Передаем ссылку в функцию отрисовки
     renderCards(filteredData, refLinkInput);
 }
 
-// 4. СБРОС ФИЛЬТРОВ
 function resetFilters() {
     document.getElementById('filter-sum').value = '';
     document.getElementById('filter-age').value = '';
     document.getElementById('filter-approval').value = '';
     document.getElementById('ref-link').value = '';
-    
-    // Перерисовываем все карточки без фильтров и с оригинальными ссылками
     renderCards(mfoData);
 }
 
-// 5. ИНИЦИАЛИЗАЦИЯ
 document.addEventListener('DOMContentLoaded', () => {
     renderCards(mfoData);
 
-    const settingsBtn = document.getElementById('settings-btn');
-    const settingsPanel = document.getElementById('settings-panel');
-    const applyBtn = document.getElementById('apply-filters');
-    const resetBtn = document.getElementById('reset-filters');
-
-    settingsBtn.addEventListener('click', () => {
-        settingsPanel.classList.toggle('hidden');
+    document.getElementById('settings-btn').addEventListener('click', () => {
+        document.getElementById('settings-panel').classList.toggle('hidden');
     });
 
-    applyBtn.addEventListener('click', () => {
-        applyFilters();
-        // Можно не закрывать панель, если хотите видеть результат сразу
-        // settingsPanel.classList.add('hidden'); 
-    });
-
-    resetBtn.addEventListener('click', () => {
-        resetFilters();
-    });
+    document.getElementById('apply-filters').addEventListener('click', applyFilters);
+    document.getElementById('reset-filters').addEventListener('click', resetFilters);
 });
