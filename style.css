@@ -1,0 +1,53 @@
+/* ... (оставьте стили из прошлого ответа) ... */
+
+/* Стили для настроек */
+.settings-panel {
+    background-color: #2c2c2e;
+    border-bottom: 1px solid #3a3a3c;
+    padding: 20px 0;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+}
+
+.settings-panel.hidden {
+    display: none;
+}
+
+.settings-panel h3 {
+    font-size: 16px;
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+.setting-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    font-size: 14px;
+}
+
+.setting-item label {
+    color: #aaa;
+}
+
+.setting-item input {
+    background: #1a1a1a;
+    border: 1px solid #3a3a3c;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 8px;
+    width: 140px;
+    font-size: 14px;
+}
+
+.apply-btn {
+    background-color: #0055ff;
+    margin-top: 10px;
+}
+
+.reset-btn {
+    background-color: #3a3a3c;
+    margin-top: 8px;
+    font-size: 14px;
+}
