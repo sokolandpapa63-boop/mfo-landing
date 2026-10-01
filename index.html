@@ -10,12 +10,30 @@
 
     <header class="header">
         <div class="container header-top">
-            <h1>Проверенные МФО 👁️</h1>
-            <button id="settings-btn" class="icon-btn">⚙️</button>
+            <h1 id="site-title">Проверенные МФО 👁️</h1>
+            <div class="header-buttons">
+                <button id="admin-toggle" class="icon-btn" title="Админ-панель">🔒</button>
+                <button id="settings-btn" class="icon-btn" title="Фильтры">⚙️</button>
+            </div>
         </div>
-        <p class="subtitle">От 0% на первый займ, высокие шансы одобрения</p>
+        <p class="subtitle" id="site-subtitle">От 0% на первый займ, высокие шансы одобрения</p>
     </header>
 
+    <!-- Админ-панель (скрыта от обычных пользователей) -->
+    <div id="admin-panel" class="admin-panel hidden">
+        <div class="container">
+            <h3>🛠 Админ-панель</h3>
+            <div class="admin-actions">
+                <button id="admin-add-card" class="btn apply-btn">➕ Добавить МФО</button>
+                <button id="admin-export" class="btn">📤 Экспорт JSON</button>
+                <button id="admin-import" class="btn">📥 Импорт JSON</button>
+                <button id="admin-reset" class="btn reset-btn">🔄 Сбросить локальные</button>
+            </div>
+            <input type="file" id="admin-import-file" accept=".json" hidden>
+        </div>
+    </div>
+
+    <!-- Панель фильтров (для всех пользователей) -->
     <div id="settings-panel" class="settings-panel hidden">
         <div class="container">
             <h3>Настройки подбора</h3>
@@ -45,7 +63,77 @@
         </div>
     </div>
 
+    <!-- Список карточек -->
     <main class="container" id="mfo-list"></main>
+
+    <!-- Модальное окно редактирования карточки -->
+    <div id="edit-modal" class="modal hidden">
+        <div class="modal-content">
+            <h3 id="edit-modal-title">Редактирование МФО</h3>
+            
+            <div class="edit-form">
+                <label>Название:
+                    <input type="text" id="edit-name">
+                </label>
+                <label>Юр. лицо:
+                    <input type="text" id="edit-legal">
+                </label>
+                <label>Сумма (₽):
+                    <input type="number" id="edit-sum">
+                </label>
+                <label>Срок (дней):
+                    <input type="number" id="edit-term">
+                </label>
+                <label>Возраст:
+                    <input type="number" id="edit-age">
+                </label>
+                <label>Одобрение (мин):
+                    <input type="number" id="edit-approval">
+                </label>
+                <label>ПСК (%):
+                    <input type="number" id="edit-psk" step="0.1">
+                </label>
+                <label>Маркировка (ERID):
+                    <input type="text" id="edit-erid" placeholder="2Vfnxxxx">
+                </label>
+                <label>Реф. ссылка:
+                    <input type="text" id="edit-refLink">
+                </label>
+                <label>Бейдж (Хит / 0%):
+                    <input type="text" id="edit-badge">
+                </label>
+                <label>Цвет логотипа:
+                    <select id="edit-color">
+                        <option value="gray">Серый</option>
+                        <option value="blue">Синий</option>
+                        <option value="green">Зелёный</option>
+                        <option value="orange">Оранжевый</option>
+                        <option value="red">Красный</option>
+                        <option value="purple">Фиолетовый</option>
+                        <option value="cyan">Голубой</option>
+                        <option value="yellow">Жёлтый</option>
+                        <option value="lime">Лайм</option>
+                        <option value="pink">Розовый</option>
+                        <option value="teal">Бирюзовый</option>
+                        <option value="brown">Коричневый</option>
+                        <option value="navy">Тёмно-синий</option>
+                        <option value="olive">Оливковый</option>
+                        <option value="maroon">Бордовый</option>
+                    </select>
+                </label>
+                <label>Обложка 16:9 (URL или загрузите файл):
+                    <input type="text" id="edit-cover" placeholder="https://... или data:image/...">
+                </label>
+                <input type="file" id="edit-cover-file" accept="image/*">
+            </div>
+
+            <div class="modal-actions">
+                <button id="edit-save" class="btn apply-btn">💾 Сохранить</button>
+                <button id="edit-delete" class="btn reset-btn">🗑 Удалить</button>
+                <button id="edit-cancel" class="btn">Отмена</button>
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
