@@ -266,3 +266,122 @@ function addNewCard() {
 // =============================================================
 function handleCoverUpload(file) {
     if (!file) return;
+    if (!file.type.startsWith('image/')) {
+        alert('Можно загружать только изображения');
+        return;
+    }
+    // Проверка размера (чтобы не раздувать localStorage)
+    if (file.size > 500 * 1024) {
+        if (!confirm('Файл больше 500 КБ. Это может замедлить сайт. Продолжить?')) {
+            return;
+        }
+    }
+    const reader = new FileReader();
+    reader.onload = (e) => {
+        document.getElementById('edit-cover').value = e.target.result;
+    };
+    reader.readAsDataURL(file);
+}
+
+// =============================================================
+// ЭКСПОРТ / ИМПОРТ JSON
+// =============================================================
+function exportJSON() {
+    // Убираем data:image из экспорта? Нет, оставляем — иначе обложки потеряются.
+    const dataStr = JSON.stringify(mfoData, null, 2);
+    const blob = new Blob([dataStr], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'mfo-data.json';
+    a.click();
+    URL.revokeObjectURL(url);
+}
+
+function importJSON(file) {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+        try {
+            const data = JSON.parse(e.target.result);
+            if (!Array.isArray(data)) throw new Error('Файл должен содержать массив');
+            mfoData = data;
+            saveData(mfoData);
+            renderCards(mfoData);
+            alert('Импорт успешен! Не забудьте нажать "Экспорт" и залить файл на GitHub.');
+        } catch (err) {
+            alert('Ошибка импорта: ' + err.message);
+        }
+    };
+    reader.readAsText(file);
+}
+
+// =============================================================
+// АДМИН-РЕЖИМ
+// =============================================================
+async function toggleAdmin() {
+    if (isAdmin) {
+        isAdmin = false;
+        document.getElementById('admin-panel').classList.add('hidden');
+        document.getElementById('admin-toggle').textContent = '🔒';
+        renderCards(mfoData);
+        return;
+    }
+
+    const pass = prompt('Введите пароль администратора:');
+    if (pass === null) return;
+
+    const hash = await sha256(pass);
+    if (hash === ADMIN_PASSWORD_HASH) {
+        isAdmin = true;
+        document.getElementById('admin-panel').classList.remove('hidden');
+        document.getElementById('admin-toggle').textContent = '🔓';
+        renderCards(mfoData);
+    } else {
+        alert('Неверный пароль');
+    }
+}
+
+// =============================================================
+// ИНИЦИАЛИЗАЦИЯ
+// =============================================================
+document.addEventListener('DOMContentLoaded', async () => {
+    // Загружаем данные с сервера (или из localStorage)
+    mfoData = await loadData();
+    renderCards(mfoData);
+
+    // Панель фильтров
+    document.getElementById('settings-btn').addEventListener('click', () => {
+        document.getElementById('settings-panel').classList.toggle('hidden');
+    });
+    document.getElementById('apply-filters').addEventListener('click', applyFilters);
+    document.getElementById('reset-filters').addEventListener('click', resetFilters);
+
+    // Админка
+    document.getElementById('admin-toggle').addEventListener('click', toggleAdmin);
+    document.getElementById('admin-add-card').addEventListener('click', addNewCard);
+    document.getElementById('admin-export').addEventListener('click', exportJSON);
+    document.getElementById('admin-import').addEventListener('click', () => {
+        document.getElementById('admin-import-file').click();
+    });
+    document.getElementById('admin-import-file').addEventListener('change', (e) => {
+        if (e.target.files[0]) importJSON(e.target.files[0]);
+    });
+    document.getElementById('admin-reset').addEventListener('click', async () => {
+        if (confirm('Сбросить локальные правки и загрузить с GitHub?')) {
+            localStorage.removeItem('mfo_data');
+            mfoData = await loadData();
+            renderCards(mfoData);
+        }
+    });
+
+    // Модальное окно
+    document.getElementById('edit-save').addEventListener('click', saveEdit);
+    document.getElementById('edit-delete').addEventListener('click', deleteCard);
+    document.getElementById('edit-cancel').addEventListener('click', closeEditModal);
+    document.getElementById('edit-cover-file').addEventListener('change', (e) => {
+        handleCoverUpload(e.target.files[0]);
+    });
+    document.getElementById('edit-modal').addEventListener('click', (e) => {
+        if (e.target.id === 'edit-modal') closeEditModal();
+    });
+});
