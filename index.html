@@ -16,30 +16,25 @@
         <p class="subtitle">От 0% на первый займ, высокие шансы одобрения</p>
     </header>
 
-    <!-- Панель настроек -->
     <div id="settings-panel" class="settings-panel hidden">
         <div class="container">
             <h3>Настройки подбора</h3>
-            
-            <!-- Сумма -->
+
             <div class="setting-item">
                 <label for="filter-sum">Сумма (₽):</label>
-                <input type="number" id="filter-sum" placeholder="Например, 15000">
+                <input type="number" id="filter-sum" placeholder="15000">
             </div>
 
-            <!-- Возраст -->
             <div class="setting-item">
                 <label for="filter-age">Возраст:</label>
-                <input type="number" id="filter-age" placeholder="Ваш возраст">
+                <input type="number" id="filter-age" placeholder="18">
             </div>
 
-            <!-- Одобрение (в минутах) -->
             <div class="setting-item">
                 <label for="filter-approval">Одобрение (мин):</label>
-                <input type="number" id="filter-approval" placeholder="Например, 5">
+                <input type="number" id="filter-approval" placeholder="5">
             </div>
 
-            <!-- Реферальная ссылка -->
             <div class="setting-item">
                 <label for="ref-link">Реф. ссылка:</label>
                 <input type="text" id="ref-link" placeholder="https://...">
@@ -50,9 +45,7 @@
         </div>
     </div>
 
-    <main class="container" id="mfo-list">
-        <!-- Карточки появятся здесь -->
-    </main>
+    <main class="container" id="mfo-list"></main>
 
     <script src="script.js"></script>
 </body>
