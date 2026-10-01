@@ -1,0 +1,17 @@
+[
+  { "id": 1, "name": "Займер", "legal": "ООО МФК \"Займер\"", "sum": 30000, "term": 21, "age": 18, "approval": 5, "psk": 0, "erid": "", "badge": "Хит", "color": "gray", "refLink": "https://zaymer.ru/?ref=123", "cover": "" },
+  { "id": 2, "name": "Займ.ру", "legal": "ООО МФК \"Займ.ру\"", "sum": 30000, "term": 21, "age": 18, "approval": 5, "psk": 0, "erid": "", "badge": "", "color": "blue", "refLink": "https://zaim.ru/?ref=456", "cover": "" },
+  { "id": 3, "name": "Webbankir", "legal": "ООО МФК \"Веббанкир\"", "sum": 15000, "term": 30, "age": 20, "approval": 10, "psk": 292, "erid": "", "badge": "", "color": "green", "refLink": "https://webbankir.com/?ref=789", "cover": "" },
+  { "id": 4, "name": "MoneyMan", "legal": "ООО МФК \"Мани Мен\"", "sum": 80000, "term": 126, "age": 18, "approval": 15, "psk": 0, "erid": "", "badge": "0%", "color": "orange", "refLink": "https://moneyman.ru/?ref=101", "cover": "" },
+  { "id": 5, "name": "TurboZaim", "legal": "ООО МФК \"Турбозайм\"", "sum": 15000, "term": 30, "age": 21, "approval": 7, "psk": 292, "erid": "", "badge": "", "color": "red", "refLink": "https://turbozaim.ru/?ref=102", "cover": "" },
+  { "id": 6, "name": "Creditter", "legal": "ООО МКК \"Кредиттер\"", "sum": 100000, "term": 365, "age": 18, "approval": 20, "psk": 292, "erid": "", "badge": "", "color": "purple", "refLink": "https://creditter.ru/?ref=103", "cover": "" },
+  { "id": 7, "name": "МигКредит", "legal": "ООО МФК \"МигКредит\"", "sum": 100000, "term": 365, "age": 22, "approval": 25, "psk": 292, "erid": "", "badge": "", "color": "cyan", "refLink": "https://migcredit.ru/?ref=104", "cover": "" },
+  { "id": 8, "name": "Платиза", "legal": "ООО МФК \"Платиза.ру\"", "sum": 15000, "term": 21, "age": 18, "approval": 5, "psk": 292, "erid": "", "badge": "", "color": "yellow", "refLink": "https://platiza.ru/?ref=105", "cover": "" },
+  { "id": 9, "name": "Быстроденьги", "legal": "ООО МФК \"Быстроденьги\"", "sum": 100000, "term": 365, "age": 18, "approval": 30, "psk": 292, "erid": "", "badge": "", "color": "lime", "refLink": "https://bistrodengi.ru/?ref=106", "cover": "" },
+  { "id": 10, "name": "Екапуста", "legal": "ООО МКК \"Русинтерфинанс\"", "sum": 30000, "term": 21, "age": 18, "approval": 5, "psk": 0, "erid": "", "badge": "", "color": "pink", "refLink": "https://ekapusta.com/?ref=107", "cover": "" },
+  { "id": 11, "name": "СмсФинанс", "legal": "ООО МФК \"СМСФИНАНС\"", "sum": 30000, "term": 30, "age": 18, "approval": 10, "psk": 292, "erid": "", "badge": "", "color": "teal", "refLink": "https://smsfinance.ru/?ref=108", "cover": "" },
+  { "id": 12, "name": "АйКредит", "legal": "ООО МФК \"АйКредит\"", "sum": 30000, "term": 30, "age": 18, "approval": 8, "psk": 292, "erid": "", "badge": "", "color": "brown", "refLink": "https://icredit.ru/?ref=109", "cover": "" },
+  { "id": 13, "name": "Кредит7", "legal": "ООО МКК \"Кредит7\"", "sum": 20000, "term": 30, "age": 18, "approval": 12, "psk": 292, "erid": "", "badge": "", "color": "navy", "refLink": "https://credit7.ru/?ref=110", "cover": "" },
+  { "id": 14, "name": "ФинТерра", "legal": "ООО МКК \"ФинТерра\"", "sum": 30000, "term": 21, "age": 18, "approval": 6, "psk": 292, "erid": "", "badge": "", "color": "olive", "refLink": "https://finterra.ru/?ref=111", "cover": "" },
+  { "id": 15, "name": "ГринМани", "legal": "ООО МФК \"ГринМани\"", "sum": 30000, "term": 21, "age": 18, "approval": 5, "psk": 0, "erid": "", "badge": "", "color": "maroon", "refLink": "https://greenmoney.ru/?ref=112", "cover": "" }
+]
