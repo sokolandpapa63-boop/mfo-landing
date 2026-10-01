@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Список проверенных МФО</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="header">
+        <div class="container header-top">
+            <h1>Проверенные МФО 👁️</h1>
+            <button id="settings-btn" class="icon-btn">⚙️</button>
+        </div>
+        <p class="subtitle">От 0% на первый займ, высокие шансы одобрения</p>
+    </header>
+
+    <!-- Панель настроек -->
+    <div id="settings-panel" class="settings-panel hidden">
+        <div class="container">
+            <h3>Настройки подбора</h3>
+            
+            <!-- Сумма -->
+            <div class="setting-item">
+                <label for="filter-sum">Сумма (₽):</label>
+                <input type="number" id="filter-sum" placeholder="Например, 15000">
+            </div>
+
+            <!-- Возраст -->
+            <div class="setting-item">
+                <label for="filter-age">Возраст:</label>
+                <input type="number" id="filter-age" placeholder="Ваш возраст">
+            </div>
+
+            <!-- Одобрение (в минутах) -->
+            <div class="setting-item">
+                <label for="filter-approval">Одобрение (мин):</label>
+                <input type="number" id="filter-approval" placeholder="Например, 5">
+            </div>
+
+            <!-- Реферальная ссылка -->
+            <div class="setting-item">
+                <label for="ref-link">Реф. ссылка:</label>
+                <input type="text" id="ref-link" placeholder="https://...">
+            </div>
+
+            <button id="apply-filters" class="btn apply-btn">Применить</button>
+            <button id="reset-filters" class="btn reset-btn">Сбросить</button>
+        </div>
+    </div>
+
+    <main class="container" id="mfo-list">
+        <!-- Карточки появятся здесь -->
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
