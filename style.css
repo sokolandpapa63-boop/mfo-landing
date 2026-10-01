@@ -1,6 +1,67 @@
-/* ... (оставьте стили из прошлого ответа) ... */
+/* ===== СБРОС И БАЗА ===== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
 
-/* Стили для настроек */
+body {
+    background-color: #1a1a1a;
+    color: #ffffff;
+    padding-bottom: 40px;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* ===== ШАПКА ===== */
+.header {
+    padding: 25px 0 15px;
+    text-align: center;
+    border-bottom: 1px solid #2c2c2e;
+    margin-bottom: 15px;
+}
+
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.header h1 {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.subtitle {
+    font-size: 13px;
+    color: #a0a0a0;
+    padding: 0 15px;
+}
+
+.icon-btn {
+    background: #2c2c2e;
+    border: none;
+    color: white;
+    font-size: 18px;
+    padding: 8px 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.icon-btn:hover {
+    background: #3a3a3c;
+}
+
+/* ===== ПАНЕЛЬ НАСТРОЕК ===== */
 .settings-panel {
     background-color: #2c2c2e;
     border-bottom: 1px solid #3a3a3c;
@@ -25,10 +86,12 @@
     align-items: center;
     margin-bottom: 12px;
     font-size: 14px;
+    gap: 10px;
 }
 
 .setting-item label {
     color: #aaa;
+    flex-shrink: 0;
 }
 
 .setting-item input {
@@ -37,8 +100,39 @@
     color: white;
     padding: 8px 12px;
     border-radius: 8px;
-    width: 140px;
+    width: 100%;
+    max-width: 160px;
     font-size: 14px;
+    outline: none;
+}
+
+.setting-item input:focus {
+    border-color: #0055ff;
+}
+
+/* ===== КНОПКИ ===== */
+.btn {
+    display: block;
+    width: 100%;
+    background-color: #3a3a3c;
+    color: #fff;
+    border: none;
+    padding: 14px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    text-align: center;
+    text-decoration: none;
+}
+
+.btn:hover {
+    background-color: #4a4a4c;
+}
+
+.btn:active {
+    transform: scale(0.98);
 }
 
 .apply-btn {
@@ -46,8 +140,121 @@
     margin-top: 10px;
 }
 
+.apply-btn:hover {
+    background-color: #0044dd;
+}
+
 .reset-btn {
     background-color: #3a3a3c;
     margin-top: 8px;
     font-size: 14px;
+}
+
+/* ===== КАРТОЧКИ МФО ===== */
+.card {
+    background-color: #2c2c2e;
+    border-radius: 16px;
+    padding: 16px;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+.badge {
+    position: absolute;
+    top: -8px;
+    right: 15px;
+    background: #ff3b30;
+    color: white;
+    font-size: 10px;
+    font-weight: bold;
+    padding: 4px 8px;
+    border-radius: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    gap: 10px;
+}
+
+.logo-placeholder {
+    background: #eee;
+    color: #000;
+    font-weight: bold;
+    font-size: 10px;
+    padding: 6px 8px;
+    border-radius: 6px;
+    min-width: 60px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+/* Цвета логотипов */
+.logo-placeholder.gray { background: #eee; color: #000; }
+.logo-placeholder.blue { background: #0055ff; color: #fff; }
+.logo-placeholder.green { background: #00a651; color: #fff; }
+.logo-placeholder.orange { background: #ff8800; color: #fff; }
+.logo-placeholder.red { background: #e53935; color: #fff; }
+.logo-placeholder.purple { background: #8e24aa; color: #fff; }
+.logo-placeholder.cyan { background: #00acc1; color: #fff; }
+.logo-placeholder.yellow { background: #fdd835; color: #000; }
+.logo-placeholder.lime { background: #7cb342; color: #fff; }
+.logo-placeholder.pink { background: #ec407a; color: #fff; }
+.logo-placeholder.teal { background: #00897b; color: #fff; }
+.logo-placeholder.brown { background: #6d4c41; color: #fff; }
+.logo-placeholder.navy { background: #1a237e; color: #fff; }
+.logo-placeholder.olive { background: #827717; color: #fff; }
+.logo-placeholder.maroon { background: #880e4f; color: #fff; }
+
+.title h2 {
+    font-size: 16px;
+    margin-bottom: 2px;
+    color: #fff;
+}
+
+.legal {
+    font-size: 10px;
+    color: #777;
+}
+
+/* ===== СЕТКА ДАННЫХ ===== */
+.info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 20px;
+    border-top: 1px solid #3a3a3c;
+    padding-top: 15px;
+}
+
+.info-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.value {
+    font-size: 15px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 2px;
+}
+
+.label {
+    font-size: 11px;
+    color: #888;
+}
+
+/* ===== АДАПТИВ ДЛЯ БОЛЬШИХ ЭКРАНОВ ===== */
+@media (min-width: 768px) {
+    .container {
+        max-width: 600px;
+    }
+    
+    .header h1 {
+        font-size: 22px;
+    }
 }
